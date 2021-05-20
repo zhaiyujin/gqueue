@@ -1,0 +1,98 @@
+# HTTP Server.
+[server]
+	address        = ":8199"
+	serverRoot     = "public"
+	serverAgent    = "fuck you"
+	logPath        = "./log/server"
+	nameToUriType  = 2
+	routeOverWrite = true
+    clientMaxBodySize = 524288000   #52428800 50M  当前设置500M
+# Logger configurations.
+[logger]
+    path   = "./log"
+    level  = "all"
+    stdout = true
+
+# Template view configurations.
+[viewer]
+    path        = "template"
+    defaultFile = "index.html"
+
+# Database configurations.
+[database]
+    link  = "mysql:root:123321@tcp(127.0.0.1:3306)/goerp"
+    debug = true
+    # 数据库日志对象配置
+    [database.logger]
+        Path   = "./log/sql"
+        Level  = "all"
+        Stdout = true
+# Redis数据库配置
+[redis]
+    default = "127.0.0.1:6379,0"
+    cache   = "127.0.0.1:6379,1,123456?idleTimeout=600"
+
+# Wechat配置
+[wechat]
+    [wechat.official]
+        appId       =   "wxc75075d014393ed0"
+        appSecret   =   "9b13173db4217cc18a710141f7085d78"
+    [wechat.mini]
+        appId       =   "wxc75075d014393ed0"
+        appSecret   =   "9b13173db4217cc18a710141f7085d78"
+    [wechat.pay]
+        appId       =   "wxc75075d014393ed0"
+        MchId       =   "9b13173db4217cc18a710141f7085d78"
+        Key         =   "fuck"
+        NotifyUrl   =   "Http://ww.baidu.com"
+
+
+
+# JWT 验证
+[jwt]
+    jwtSecret = "kQH5cZam58SsYpMHaycgpz9X2dGb8cZwN8mkr5rw2Hjl56ww9lfTD6rR8w7lFPMK"
+    #默认1个小时，这里设置2小时
+    ttl=2
+    #bearer测试用永久token设置
+    bearer="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE5NzgxOTM1ODQsImlhdCI6MTYxODE5MzU4NCwicm9sZSI6InVzZXIiLCJzdWIiOjF9.Kk5uKpKjXLkdudHtUz5u41KJLabVke8uWe33vmxprQ0"
+   # bearer="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTg0ODUwMTAsImlhdCI6MTYxODQ3NzgxMCwicm9sZSI6InVzZXIiLCJzdWIiOjN9.nVefqNyuBJY7C-IsmOLLEqbAP7c_y9FD_N0SqtZEFmE"
+# GF-CLI工具配置
+[gfcli]
+    # 自定义DAO生成配置(默认是读取database配置)
+    [[gfcli.gen.dao]]
+        link   = "mysql:root:123321@tcp(127.0.0.1:3306)/goerp"
+        group  = "default"
+        jsonCase ="Snake"
+        tables = "user,group,menu,role,setting,steel,wechat,goods,order"
+    [gfcli.build]
+        name     = "tonicgb"
+        arch     = "amd64"
+        system   = "linux,windows"
+        mod      = "none"
+        cgo      = 0
+        pack     = "public,template,config"
+        version  = "v1.0.0"
+        output   = "./bin"
+        extra    = ""
+
+[storage]
+    driver =    "local"
+    [storage.local]
+        root    =   "upload"
+        url = "http://192.168.0.126:8199/upload"
+    [storage.alioss]
+        accessId    =   "LTAI4GLAFf8cKEKoCYYrvJY9"
+        accessKey   =   "qjKW6wxofEwFZSo6W6pvO4BOKtN9MC"
+        bucket  =   "healthy-community"
+        endpoint    =   "oss-cn-beijing.aliyuncs.com"
+        endpointInternal    =   "<internal endpoint [OSS内网节点] 如：oss-cn-shenzhen-internal.aliyuncs.com>"
+        cdnDomain   =   "https://spotshop.oss-cn-hangzhou.aliyuncs.com"
+        ssl =   true
+        url =   "https://healthy-community.oss-cn-beijing.aliyuncs.com"
+
+[beyondh]
+    url         =   "http://pms.beyondh.com:7897"
+    channelKey  =   "czrc"
+    key         =   "czrcapp"
+    orgId       =   "288733476028418"
+    doMain      =   "pms"
