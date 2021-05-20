@@ -32,20 +32,6 @@
     default = "127.0.0.1:6379,0"
     cache   = "127.0.0.1:6379,1,123456?idleTimeout=600"
 
-# Wechat配置
-[wechat]
-    [wechat.official]
-        appId       =   "wxc75075d014393ed0"
-        appSecret   =   "9b13173db4217cc18a710141f7085d78"
-    [wechat.mini]
-        appId       =   "wxc75075d014393ed0"
-        appSecret   =   "9b13173db4217cc18a710141f7085d78"
-    [wechat.pay]
-        appId       =   "wxc75075d014393ed0"
-        MchId       =   "9b13173db4217cc18a710141f7085d78"
-        Key         =   "fuck"
-        NotifyUrl   =   "Http://ww.baidu.com"
-
 
 
 # JWT 验证
@@ -75,24 +61,4 @@
         output   = "./bin"
         extra    = ""
 
-[storage]
-    driver =    "local"
-    [storage.local]
-        root    =   "upload"
-        url = "http://192.168.0.126:8199/upload"
-    [storage.alioss]
-        accessId    =   "LTAI4GLAFf8cKEKoCYYrvJY9"
-        accessKey   =   "qjKW6wxofEwFZSo6W6pvO4BOKtN9MC"
-        bucket  =   "healthy-community"
-        endpoint    =   "oss-cn-beijing.aliyuncs.com"
-        endpointInternal    =   "<internal endpoint [OSS内网节点] 如：oss-cn-shenzhen-internal.aliyuncs.com>"
-        cdnDomain   =   "https://spotshop.oss-cn-hangzhou.aliyuncs.com"
-        ssl =   true
-        url =   "https://healthy-community.oss-cn-beijing.aliyuncs.com"
 
-[beyondh]
-    url         =   "http://pms.beyondh.com:7897"
-    channelKey  =   "czrc"
-    key         =   "czrcapp"
-    orgId       =   "288733476028418"
-    doMain      =   "pms"
